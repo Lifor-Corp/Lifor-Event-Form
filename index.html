@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles/output.css" rel="stylesheet" />
+    <link href="src/css/style.css" rel="stylesheet" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+    <title>Add new event</title>
+</head>
+
+<body>
+
+    <main class="mx-auto px-2 py-2 text-center">
+        <form action="" method="post">
+            <h1 class="text-3xl font-normal">Add new event</h1>
+            <div class="inputs-holder mt-2">
+                <input class="bg-slate-100 rounded block w-full" type="text" name="event-name" id="event-name" placeholder="Event name">
+                <input class="bg-slate-100 rounded block w-full mt-1" type="text" name="start-time" id="start-time" placeholder="Start time">
+                <input class="bg-slate-100 rounded block w-full mt-1" type="text" name="end-time" id="end-time" placeholder="End time">
+                <textarea class="bg-slate-100 rounded block w-full mt-1" name="event-description" id="event-description" cols="30" rows="10"
+                    placeholder="Event description"></textarea>
+            </div>
+        </form>
+    </main>
+
+    <script src="/src/js/main.js"></script>
+    <script>
+        function sendEventData() {
+            // Формируем объект с данными
+            let data = fetchData()
+
+            // Отправляем данные в бот
+            window.Telegram.WebApp.sendData(JSON.stringify(data))
+        }
+
+        let mainButton = window.Telegram.WebApp.MainButton;
+        // mainButton.onClick(eventDataSend);
+        Telegram.WebApp.onEvent('mainButtonClicked', sendEventData)
+        mainButton.show()
+        window.Telegram.WebApp.ready()
+    </script>
+</body>
+
+</html>
