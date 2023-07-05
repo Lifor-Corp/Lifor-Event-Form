@@ -23,3 +23,17 @@ h1, h2 {
 h3 {
     font-weight: 600;
 }
+
+.time-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.time-block input {
+    flex: 1;
+}
+
+.time-block input:first-child{
+    margin-right: 4px;
+}

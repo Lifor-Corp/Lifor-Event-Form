@@ -16,16 +16,16 @@
 <body>
 
     <main class="mx-auto px-2 py-2 text-center">
-        <form action="" method="post">
-            <h1 class="text-3xl font-normal">Add new event</h1>
-            <div class="inputs-holder mt-2">
-                <input class="bg-slate-100 rounded block w-full" type="text" name="event-name" id="event-name" placeholder="Event name">
-                <input class="bg-slate-100 rounded block w-full mt-1" type="text" name="start-time" id="start-time" placeholder="Start time">
-                <input class="bg-slate-100 rounded block w-full mt-1" type="text" name="end-time" id="end-time" placeholder="End time">
-                <textarea class="bg-slate-100 rounded block w-full mt-1" name="event-description" id="event-description" cols="30" rows="10"
-                    placeholder="Event description"></textarea>
+        <h1 class="text-3xl font-normal">Add new event</h1>
+        <div class="inputs-holder mt-2">
+            <input class="bg-slate-100 rounded block w-full" type="text" name="event-name" id="event-name" placeholder="Event name">
+            <div class="w-full time-block">
+                <input class="bg-slate-100 rounded block mt-1" type="tel" name="start-time" id="start-time" placeholder="Start time">
+                <input class="bg-slate-100 rounded block mt-1" type="tel" name="end-time" id="end-time" placeholder="End time">
             </div>
-        </form>
+            <textarea class="bg-slate-100 rounded block w-full mt-1" name="event-description" id="event-description" cols="30" rows="10"
+                placeholder="Event description"></textarea>
+        </div>
     </main>
 
     <script src="/src/js/main.js"></script>
