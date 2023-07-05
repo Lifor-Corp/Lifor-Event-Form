@@ -539,6 +539,10 @@ video {
   display: block;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
 .w-full {
   width: 100%;
 }
