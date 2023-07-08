@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Styles -->
-    <link href="/styles/output.css" rel="stylesheet" />
-    <link href="src/css/style.css" rel="stylesheet" />
+    <link href="./styles/output.css" rel="stylesheet" />
+    <link href="./src/css/style.css" rel="stylesheet" />
     <!-- Telegram API -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- LeafletJS API -->
@@ -44,19 +44,22 @@
     <script src="/src/js/mapProcessing.js"></script>
     <script src="/src/js/telegramUtils.js"></script>
     <script>
+        // creating alias for window.Telegram.WebApp for easier access
+        let tg = window.Telegram.WebApp;
+
         function sendEventData() {
             // Формируем объект с данными
             let data = fetchData()
 
             // Отправляем данные в бот
-            window.Telegram.WebApp.sendData(JSON.stringify(data))
+            tg.sendData(JSON.stringify(data))
         }
 
-        let mainButton = window.Telegram.WebApp.MainButton;
+        let mainButton = tg.MainButton;
         // mainButton.onClick(eventDataSend);
-        Telegram.WebApp.onEvent('mainButtonClicked', sendEventData)
+        tg.onEvent('mainButtonClicked', sendEventData)
         mainButton.show()
-        window.Telegram.WebApp.ready()
+        tg.ready()
     </script>
 </body>
 

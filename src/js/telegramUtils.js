@@ -4,9 +4,10 @@ function fetchData() {
     let end_time = document.getElementById('end-time')
 
     let data = {
-        eventName: event_name,
-        startTime: start_time,
-        endTime: end_time
+        web_app_name: "create_event",
+        event_name: event_name,
+        start_time: start_time,
+        end_time: end_time
     }
 
     return data
