@@ -36,11 +36,12 @@
             <textarea class="bg-slate-100 rounded block w-full mt-1" name="event-description" id="event-description" cols="30" rows="10"
                 placeholder="Event description"></textarea>
         </div>
-        <div id="map" class="w-full h-60">
+        <div id="map" class="w-full h-60 rounded mt-1">
 
         </div>
     </main>
 
+    <script src="/src/js/mapProcessing.js"></script>
     <script src="/src/js/telegramUtils.js"></script>
     <script>
         // creating alias for window.Telegram.WebApp for easier access
@@ -60,7 +61,6 @@
         mainButton.show()
         tg.ready()
     </script>
-    <script src="./src/js/mapProcessing.js"></script>
 </body>
 
 </html>

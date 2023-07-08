@@ -37,3 +37,13 @@ h3 {
 .time-block input:first-child{
     margin-right: 4px;
 }
+
+@media screen and (max-width: 510px) {
+    .time-block {
+        flex-direction: column;
+    }
+
+    .time-block input:first-child {
+        margin-right: 0;
+    }
+}
