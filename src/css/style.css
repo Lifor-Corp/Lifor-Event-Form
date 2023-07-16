@@ -38,6 +38,18 @@ h3 {
     margin-right: 4px;
 }
 
+.time-start:before {
+    content: "Start time:";
+    margin-right: .6em;
+    color: #9d9d9d;
+}
+
+.time-end:before {
+    content: "End time:";
+    margin-right: .6em;
+    color: #9d9d9d;
+}
+
 @media screen and (max-width: 510px) {
     .time-block {
         flex-direction: column;
