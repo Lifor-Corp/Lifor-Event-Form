@@ -48,24 +48,7 @@
 
     <script src="./src/js/mapProcessing.js"></script>
     <script src="./src/js/telegramUtils.js"></script>
-    <script>
-        // creating alias for window.Telegram.WebApp for easier access
-        let tg = window.Telegram.WebApp;
-
-        function sendEventData() {
-            // Формируем объект с данными
-            let data = fetchData()
-
-            // Отправляем данные в бот
-            tg.sendData(JSON.stringify(data))
-        }
-
-        let mainButton = tg.MainButton;
-        // mainButton.onClick(eventDataSend);
-        tg.onEvent('mainButtonClicked', sendEventData)
-        mainButton.show()
-        tg.ready()
-    </script>
+    <script src="./src/js/tgSpeak.js"></script>
 </body>
 
 </html>

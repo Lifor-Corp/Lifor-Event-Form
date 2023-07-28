@@ -1,7 +1,7 @@
 function fetchData() {
-    let event_name = document.getElementById('event-name')
-    let start_time = document.getElementById('start-time')
-    let end_time = document.getElementById('end-time')
+    let event_name = document.getElementById('event-name').value;
+    let start_time = document.getElementById('start-time').value;
+    let end_time = document.getElementById('end-time').value;
 
     let data = {
         web_app_name: "create_event",
@@ -10,5 +10,5 @@ function fetchData() {
         end_time: end_time
     }
 
-    return data
+    return data;
 }
