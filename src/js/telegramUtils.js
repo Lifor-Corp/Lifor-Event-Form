@@ -17,7 +17,7 @@ function fetchData() {
     let event_name = document.getElementById('event-name').value;
     let start_time_raw = document.getElementById('start-time').value;
     let end_time_raw = document.getElementById('end-time').value;
-    let date_raw = document.getElementById('date');
+    let date_raw = document.getElementById('date').value;
     let description = document.getElementById('description').value;
     let latitude = 0;
     let longitude = 0;
