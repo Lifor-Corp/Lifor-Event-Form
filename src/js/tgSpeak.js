@@ -3,12 +3,14 @@ let tg = window.Telegram.WebApp;
 
 function sendEventData() {
     // Формируем объект с данными
-    let data = fetchData();
+    let data = fetchData()
 
     // Отправляем данные в бот
-    tg.sendData(JSON.stringify(data));
+    tg.sendData(JSON.stringify(data))
 }
 
-tg.mainButton.onClick(sendEventData);
-tg.mainButton.show();
-tg.ready();
+let mainButton = tg.MainButton;
+// mainButton.onClick(sendEventData);
+tg.onEvent('mainButtonClicked', sendEventData)
+mainButton.show()
+tg.ready()
