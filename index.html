@@ -51,17 +51,19 @@
         let params = new URLSearchParams(location.search);
         let WEB_APP_MODE = params.get("mode");
         let WEB_APP_DATA = JSON.parse(params.get("data"));
+        let EVENT_INFO = WEB_APP_DATA["event_info"];
+        let USERS_INFO = WEB_APP_DATA["users_info"];
     </script>
     <script src="./src/js/mapProcessing.js"></script>
     <script>
         // Setting value if it's edit mode
         if (WEB_APP_MODE == "edit")
         {
-            document.getElementById('event-name').value = WEB_APP_DATA["name"];
+            document.getElementById('event-name').value = EVENT_INFO["name"];
             // document.getElementById('start-time').value;
             // document.getElementById('end-time').value;
             // document.getElementById('date').value;
-            document.getElementById('event-description').value = WEB_APP_DATA["description"];
+            document.getElementById('event-description').value = EVENT_INFO["description"];
         }
     </script>
     <script src="./src/js/telegramUtils.js"></script>
