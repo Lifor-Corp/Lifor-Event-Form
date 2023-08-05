@@ -46,6 +46,12 @@
         </div>
     </main>
 
+    <script>
+        // Loading data got from url
+        let params = new URLSearchParams(location.search);
+        let WEB_APP_MODE = params.get("mode");
+        let WEB_APP_DATA = JSON.parse(params.get("data"));
+    </script>
     <script src="./src/js/mapProcessing.js"></script>
     <script src="./src/js/telegramUtils.js"></script>
     <script>
