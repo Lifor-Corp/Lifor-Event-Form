@@ -53,6 +53,17 @@
         let WEB_APP_DATA = JSON.parse(params.get("data"));
     </script>
     <script src="./src/js/mapProcessing.js"></script>
+    <script>
+        // Setting value if it's edit mode
+        if (WEB_APP_MODE == "edit")
+        {
+            document.getElementById('event-name').value = WEB_APP_DATA["name"];
+            // document.getElementById('start-time').value;
+            // document.getElementById('end-time').value;
+            // document.getElementById('date').value;
+            document.getElementById('event-description').value = WEB_APP_DATA["description"];
+        }
+    </script>
     <script src="./src/js/telegramUtils.js"></script>
     <script>
         // creating alias for window.Telegram.WebApp for easier access
