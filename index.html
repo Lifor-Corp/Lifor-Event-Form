@@ -54,17 +54,17 @@
 
         function sendEventData() {
             // Формируем объект с данными
-            let data = fetchData()
+            let data = fetchData();
 
             // Отправляем данные в бот
-            tg.sendData(JSON.stringify(data))
+            tg.sendData(JSON.stringify(data));
         }
 
         let mainButton = tg.MainButton;
-        // mainButton.onClick(eventDataSend);
-        tg.onEvent('mainButtonClicked', sendEventData)
-        mainButton.show()
-        tg.ready()
+        // mainButton.onClick(sendEventData);
+        tg.onEvent('mainButtonClicked', sendEventData);
+        mainButton.show();
+        tg.ready();
     </script>
 </body>
 
