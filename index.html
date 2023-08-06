@@ -56,6 +56,18 @@
     </script>
     <script src="./src/js/mapProcessing.js"></script>
     <script>
+        function makeFixedDigitNumberString(value, number_of_digits=2)
+        {
+            value = value % (10**number_of_digits);
+            let res = value.toString();
+            let old_size = res.length;
+            for (let i = 0; i < number_of_digits - old_size; i++)
+            {
+                res = "0" + res;
+            }
+            return res;
+        }
+
         // Setting value if it's edit mode
         if (WEB_APP_MODE == "edit")
         {
@@ -75,14 +87,15 @@
                 let end_time = new Date(1000 * Number(EVENT_INFO["end_time"]));
 
                 // to time fileds we need to show data in format HH:MM
-                document.getElementById('start-time').value = start_time.getHours() + ":" + start_time.getMinutes();
-                document.getElementById('end-time').value = end_time.getHours() + ":" + end_time.getMinutes();
+                // and it's strongly required to be two digits there
+                document.getElementById('start-time').value = makeFixedDigitNumberString(start_time.getHours()) + ":" + makeFixedDigitNumberString(start_time.getMinutes());
+                document.getElementById('end-time').value = makeFixedDigitNumberString(end_time.getHours()) + ":" + makeFixedDigitNumberString(end_time.getMinutes());
 
 
                 // to date field we need to set value in format YYYY:MM:DD
                 // to make it easier for now we take date of start_time
                 // because for now start_time and end_time are equal
-                document.getElementById('date').value = start_time.getFullYear() + "-" + start_time.getMonth() + "-" + start_time.getDate();
+                document.getElementById('date').value = makeFixedDigitNumberString(start_time.getFullYear(), 4) + "-" + makeFixedDigitNumberString(start_time.getMonth()) + "-" + makeFixedDigitNumberString(start_time.getDate());
             }
         }
     </script>
