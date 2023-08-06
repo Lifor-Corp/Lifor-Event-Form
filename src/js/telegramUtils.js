@@ -27,9 +27,10 @@ function fetchData() {
     let start_time = toDate(date_raw, start_time_raw).toString();
     let end_time = toDate(date_raw, end_time_raw).toString();
 
+    let data = {};
     if (WEB_APP_MODE == "create")
     {
-        let data = {
+        data = {
             web_app_name: "create_event",
             event_name: event_name,
             start_time: start_time,
@@ -41,7 +42,7 @@ function fetchData() {
     }
     else if (WEB_APP_MODE == "edit")
     {
-        let data = {
+        data = {
             web_app_name: "edit_event",
             id: Number(EVENT_INFO["id"]),
             event_name: event_name,
