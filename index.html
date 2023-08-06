@@ -95,7 +95,7 @@
                 // to date field we need to set value in format YYYY:MM:DD
                 // to make it easier for now we take date of start_time
                 // because for now start_time and end_time are equal
-                document.getElementById('date').value = makeFixedDigitNumberString(start_time.getFullYear(), 4) + "-" + makeFixedDigitNumberString(start_time.getMonth()) + "-" + makeFixedDigitNumberString(start_time.getDate());
+                document.getElementById('date').value = makeFixedDigitNumberString(start_time.getFullYear(), 4) + "-" + makeFixedDigitNumberString(start_time.getMonth() + 1) + "-" + makeFixedDigitNumberString(start_time.getDate());
             }
         }
     </script>
