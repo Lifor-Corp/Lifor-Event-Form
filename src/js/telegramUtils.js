@@ -19,20 +19,38 @@ function fetchData() {
     let end_time_raw = document.getElementById('end-time').value;
     let date_raw = document.getElementById('date').value;
     let description = document.getElementById('event-description').value;
-    let latitude = 0;
-    let longitude = 0;
+
+    let markerPos = marker.getLatLng();
+    let latitude = markerPos[0];
+    let longitude = markerPos[1];
 
     let start_time = toDate(date_raw, start_time_raw).toString();
     let end_time = toDate(date_raw, end_time_raw).toString();
 
-    let data = {
-        web_app_name: "create_event",
-        event_name: event_name,
-        start_time: start_time,
-        end_time: end_time,
-        description: description,
-        latitude: latitude,
-        longitude: longitude,
+    if (WEB_APP_MODE == "create")
+    {
+        let data = {
+            web_app_name: "create_event",
+            event_name: event_name,
+            start_time: start_time,
+            end_time: end_time,
+            description: description,
+            latitude: latitude,
+            longitude: longitude,
+        }
+    }
+    else if (WEB_APP_MODE == "edit")
+    {
+        let data = {
+            web_app_name: "edit_event",
+            id: Number(EVENT_INFO["id"]),
+            event_name: event_name,
+            start_time: start_time,
+            end_time: end_time,
+            description: description,
+            latitude: latitude,
+            longitude: longitude,
+        }
     }
 
     return data;
