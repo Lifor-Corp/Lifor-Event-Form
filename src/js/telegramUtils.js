@@ -21,8 +21,8 @@ function fetchData() {
     let description = document.getElementById('event-description').value;
 
     let markerPos = marker.getLatLng();
-    let latitude = markerPos[0];
-    let longitude = markerPos[1];
+    let latitude = markerPos.lat;
+    let longitude = markerPos.lng;
 
     let start_time = toDate(date_raw, start_time_raw).toString();
     let end_time = toDate(date_raw, end_time_raw).toString();
