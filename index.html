@@ -68,8 +68,11 @@
             {
                 // this is in scope to prevent start_time and end_time variables
                 // to be seen in global scope
-                let start_time = new Date(Number(EVENT_INFO["start_time"]));
-                let end_time = new Date(Number(EVENT_INFO["end_time"]));
+
+                // unix time must be multiplied by 1000 due to javascript date format
+                // it gets milliseconds
+                let start_time = new Date(1000 * Number(EVENT_INFO["start_time"]));
+                let end_time = new Date(1000 * Number(EVENT_INFO["end_time"]));
 
                 // to time fileds we need to show data in format HH:MM
                 document.getElementById('start-time').value = start_time.getHours() + ":" + start_time.getMinutes();
