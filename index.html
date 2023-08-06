@@ -59,11 +59,28 @@
         // Setting value if it's edit mode
         if (WEB_APP_MODE == "edit")
         {
+            // setting text fields
             document.getElementById('event-name').value = EVENT_INFO["name"];
-            // document.getElementById('start-time').value;
-            // document.getElementById('end-time').value;
-            // document.getElementById('date').value;
             document.getElementById('event-description').value = EVENT_INFO["description"];
+
+            // setting non-text values
+            // loading unix time timestamp values to Date object
+            {
+                // this is in scope to prevent start_time and end_time variables
+                // to be seen in global scope
+                let start_time = new Date(Number(EVENT_INFO["start_time"]));
+                let end_time = new Date(Number(EVENT_INFO["end_time"]));
+
+                // to time fileds we need to show data in format HH:MM
+                document.getElementById('start-time').value = start_time.getHours() + ":" + start_time.getMinutes();
+                document.getElementById('end-time').value = end_time.getHours() + ":" + end_time.getMinutes();
+
+
+                // to date field we need to set value in format YYYY:MM:DD
+                // to make it easier for now we take date of start_time
+                // because for now start_time and end_time are equal
+                document.getElementById('date').value = start_time.getFullYear() + "-" + start_time.getMonth() + "-" + start_time.getDate();
+            }
         }
     </script>
     <script src="./src/js/telegramUtils.js"></script>
