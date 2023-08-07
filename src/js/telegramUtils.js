@@ -26,8 +26,9 @@ function fetchData() {
         date_end_raw = document.getElementById('date-end').value;
     }
     let description = document.getElementById('event-description').value;
-    let latitude = 0;
-    let longitude = 0;
+    let latlng = getLocation();
+    let latitude = latlng.lat;
+    let longitude = latlng.lng;
 
     let start_time = toDate(date_start_raw, start_time_raw).toString();
     let end_time = toDate(date_end_raw, end_time_raw).toString();

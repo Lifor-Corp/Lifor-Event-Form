@@ -10,6 +10,10 @@ function setMapView(pos) {
     map.setView([coords.latitude, coords.longitude], 11);
 }
 
+function getLocation() {
+    return marker.getLatLng();
+}
+
 navigator.geolocation.getCurrentPosition(setMapView);
 map.on('click', function(e) {
     map.setView([e.latlng.lat, e.latlng.lng], map.getZoom());
