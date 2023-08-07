@@ -60,6 +60,18 @@ h3 {
     color: #9d9d9d;
 }
 
+.date-start:before {
+    content: "Date start:";
+    margin-right: .6em;
+    color: #9d9d9d;
+}
+
+.date-end:before {
+    content: "Date end:";
+    margin-right: .6em;
+    color: #9d9d9d;
+}
+
 @media screen and (max-width: 510px) {
     .time-block {
         flex-direction: column;
