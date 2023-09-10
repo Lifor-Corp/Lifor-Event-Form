@@ -17,15 +17,22 @@ function fetchData() {
     let event_name = document.getElementById('event-name').value;
     let start_time_raw = document.getElementById('start-time').value;
     let end_time_raw = document.getElementById('end-time').value;
-    let date_raw = document.getElementById('date').value;
+    let date_start_raw = document.getElementById('date-start').value;
+    
+    // checking if this field exist
+    if (document.getElementById('date-end'))
+    {
+        let date_end_raw = document.getElementById('date-end').value;
+    }
+
     let description = document.getElementById('event-description').value;
 
     let markerPos = marker.getLatLng();
     let latitude = markerPos.lat;
     let longitude = markerPos.lng;
 
-    let start_time = toDate(date_raw, start_time_raw).toString();
-    let end_time = toDate(date_raw, end_time_raw).toString();
+    let start_time = toDate(date_start_raw, start_time_raw).toString();
+    let end_time = toDate(date_end_raw, end_time_raw).toString();
 
     let data = {};
     if (WEB_APP_MODE == "create")
