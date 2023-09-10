@@ -37,7 +37,10 @@
                 <input class="bg-slate-100 rounded block mt-1 time-start" type="time" name="start-time" id="start-time" placeholder="Start time">
                 <input class="bg-slate-100 rounded block mt-1 time-end" type="time" name="end-time" id="end-time" placeholder="End time">
             </div>
-            <input class="bg-slate-100 rounded block w-full mt-1 date-block" type="date" name="date" id="date">
+            <div id="date-block">
+                <input class="bg-slate-100 rounded block w-full mt-1 date-block" type="date" name="date-start" id="date-start">
+                <button class="bg-sky-300 rounded block w-full mt-1" id="add-date">Add end date</button>
+            </div>
             <textarea class="bg-slate-100 rounded block w-full mt-1" name="event-description" id="event-description" cols="30" rows="10"
                 placeholder="Event description"></textarea>
         </div>
@@ -45,7 +48,8 @@
 
         </div>
     </main>
-
+  
+    <script src="./src/js/fieldsProcessing.js"></script>
     <script>
         // Loading data got from url
         let params = new URLSearchParams(location.search);
@@ -105,6 +109,7 @@
             }
         }
     </script>
+  
     <script src="./src/js/telegramUtils.js"></script>
     <script>
         // creating alias for window.Telegram.WebApp for easier access
