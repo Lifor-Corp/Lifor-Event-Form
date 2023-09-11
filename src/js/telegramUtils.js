@@ -18,11 +18,12 @@ function fetchData() {
     let start_time_raw = document.getElementById('start-time').value;
     let end_time_raw = document.getElementById('end-time').value;
     let date_start_raw = document.getElementById('date-start').value;
-    
+    let date_end_raw = date_start_raw;
+
     // checking if this field exist
     if (document.getElementById('date-end'))
     {
-        let date_end_raw = document.getElementById('date-end').value;
+        date_end_raw = document.getElementById('date-end').value;
     }
 
     let description = document.getElementById('event-description').value;
