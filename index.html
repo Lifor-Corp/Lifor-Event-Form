@@ -95,11 +95,33 @@
                 document.getElementById('start-time').value = makeFixedDigitNumberString(start_time.getHours()) + ":" + makeFixedDigitNumberString(start_time.getMinutes());
                 document.getElementById('end-time').value = makeFixedDigitNumberString(end_time.getHours()) + ":" + makeFixedDigitNumberString(end_time.getMinutes());
 
+                function getDateStringFromTimestamp(timestamp)
+                {
+                    let result = makeFixedDigitNumberString(timestamp.getFullYear(), 4) + "-";
+                    result += makeFixedDigitNumberString(timestamp.getMonth() + 1) + "-";
+                    result += makeFixedDigitNumberString(timestamp.getDate());
+                    return result;
+                }
 
                 // to date field we need to set value in format YYYY:MM:DD
-                // to make it easier for now we take date of start_time
-                // because for now start_time and end_time are equal
-                document.getElementById('date').value = makeFixedDigitNumberString(start_time.getFullYear(), 4) + "-" + makeFixedDigitNumberString(start_time.getMonth() + 1) + "-" + makeFixedDigitNumberString(start_time.getDate());
+                
+                // first we need to check if start_date and end_date are equal
+                // if so we do not create date_end field and if we desire to add it
+                // filling it with start_date
+
+                // if dates are diffrent we must create independent field at application start
+                // and fill it with appropriate value
+                let date_start_str = getDateStringFromTimestamp(start_time);
+                let date_end_str = getDateStringFromTimestamp(end_time);
+
+                document.getElementById('date-start').value = date_start_str;
+                if (date_start_str != date_end_str)
+                {
+                    // adding end-time field
+                    addDateField();
+                    document.getElementById('date-end').value = date_end_str;
+                }
+
 
                 // adding marker on a map
                 marker = L.marker([Number(EVENT_INFO["latitude"]), Number(EVENT_INFO["longitude"])]).addTo(map);
