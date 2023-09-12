@@ -10,7 +10,11 @@ function setMapView(pos) {
     map.setView([coords.latitude, coords.longitude], 11);
 }
 
-navigator.geolocation.getCurrentPosition(setMapView);
+if (WEB_APP_MODE !== "edit")
+{
+    navigator.geolocation.getCurrentPosition(setMapView);
+}
+
 map.on('click', function(e) {
     map.setView([e.latlng.lat, e.latlng.lng], map.getZoom());
     if (marker !== undefined) {

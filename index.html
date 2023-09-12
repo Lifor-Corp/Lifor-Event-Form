@@ -49,8 +49,89 @@
         </div>
     </main>
   
-    <script src="./src/js/mapProcessing.js"></script>
     <script src="./src/js/fieldsProcessing.js"></script>
+    <script>
+        // Loading data got from url
+        let params = new URLSearchParams(location.search);
+        let WEB_APP_MODE = params.get("mode");
+        let WEB_APP_DATA = JSON.parse(params.get("data"));
+        let EVENT_INFO = WEB_APP_DATA["event_info"];
+        let USERS_INFO = WEB_APP_DATA["users_info"];
+    </script>
+    <script src="./src/js/mapProcessing.js"></script>
+    <script>
+        function makeFixedDigitNumberString(value, number_of_digits=2)
+        {
+            value = value % (10**number_of_digits);
+            let res = value.toString();
+            let old_size = res.length;
+            for (let i = 0; i < number_of_digits - old_size; i++)
+            {
+                res = "0" + res;
+            }
+            return res;
+        }
+
+        // Setting value if it's edit mode
+        if (WEB_APP_MODE == "edit")
+        {
+            // setting text fields
+            document.getElementById('event-name').value = EVENT_INFO["name"];
+            document.getElementById('event-description').value = EVENT_INFO["description"];
+
+            // setting non-text values
+            // loading unix time timestamp values to Date object
+            {
+                // this is in scope to prevent start_time and end_time variables
+                // to be seen in global scope
+
+                // unix time came from server must be multiplied by 1000 due to javascipt things
+                // it accepts unix time in milliseconds
+                let start_time = new Date(1000 * Number(EVENT_INFO["start_time"]));
+                let end_time = new Date(1000 * Number(EVENT_INFO["end_time"]));
+
+                // to time fileds we need to show data in format HH:MM
+                // and it's strongly required to be two digits there
+                document.getElementById('start-time').value = makeFixedDigitNumberString(start_time.getHours()) + ":" + makeFixedDigitNumberString(start_time.getMinutes());
+                document.getElementById('end-time').value = makeFixedDigitNumberString(end_time.getHours()) + ":" + makeFixedDigitNumberString(end_time.getMinutes());
+
+                function getDateStringFromTimestamp(timestamp)
+                {
+                    let result = makeFixedDigitNumberString(timestamp.getFullYear(), 4) + "-";
+                    result += makeFixedDigitNumberString(timestamp.getMonth() + 1) + "-";
+                    result += makeFixedDigitNumberString(timestamp.getDate());
+                    return result;
+                }
+
+                // to date field we need to set value in format YYYY:MM:DD
+                
+                // first we need to check if start_date and end_date are equal
+                // if so we do not create date_end field and if we desire to add it
+                // filling it with start_date
+
+                // if dates are diffrent we must create independent field at application start
+                // and fill it with appropriate value
+                let date_start_str = getDateStringFromTimestamp(start_time);
+                let date_end_str = getDateStringFromTimestamp(end_time);
+
+                document.getElementById('date-start').value = date_start_str;
+                if (date_start_str != date_end_str)
+                {
+                    // adding end-time field
+                    addDateField();
+                    document.getElementById('date-end').value = date_end_str;
+                }
+
+
+                // adding marker on a map
+                marker = L.marker([Number(EVENT_INFO["latitude"]), Number(EVENT_INFO["longitude"])]).addTo(map);
+
+                // center map on this point
+                map.setView([Number(EVENT_INFO["latitude"]), Number(EVENT_INFO["longitude"])], 9);
+            }
+        }
+    </script>
+  
     <script src="./src/js/telegramUtils.js"></script>
     <script>
         // creating alias for window.Telegram.WebApp for easier access

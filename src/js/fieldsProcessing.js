@@ -10,6 +10,10 @@ function addDateField() {
     dateEnd.id = "date-end";
     dateEnd.name = "date-end";
     dateEnd.classList.add("bg-slate-100", "rounded", "block", "w-full", "mt-1", "date-end");
+    
+    // adding same value to date-end as it was in date-start
+    dateEnd.value = document.getElementById("date-start").value;
+
     block.appendChild(dateEnd);
 }
 
